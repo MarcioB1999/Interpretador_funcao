@@ -14,9 +14,9 @@ struct No_lista{
     char caractere;
     No_lista *prox;
 
-    No_lista(){
+    No_lista(char carac='0'){
         prox = nullptr;
-        caractere = 'v';
+        caractere = carac;
     }
 };
 

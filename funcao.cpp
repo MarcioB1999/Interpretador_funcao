@@ -6,7 +6,7 @@
 using namespace std;
 
 class Funcao{
-    public:
+    private:
     No_lista *variaveis;
     char *expressao;
     No *raiz;
@@ -19,7 +19,7 @@ class Funcao{
     }
 
 
-    double get_valor(double *vetor = NULL){
+    double Get_valor(double *vetor = NULL){
         if(raiz == NULL){
 
             raiz = (No*)malloc(sizeof(No));
