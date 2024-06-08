@@ -18,6 +18,10 @@ A pra instanciar uma classe, o construtor recebe uma expressão e um ponteiro da
 
 Toda expressão deve abrir e fechar parênteses
 
+## Próxima atualização proposta: 
+
+Quero retirar a função func e colocar um elemento no nó que calcula o valor, chamando recursivamente, em vez de apenas um caractere que diz qual operação, irei fazer um objeto como elemento que vai ter a operação em si, ou seja, teria um objeto para cada operação (não acho bonito um monte de if) 
+
 👎Forma Errada: (x+y)^2+x\
 👍Forma Correta: ((x+y)^2)+x
 
