@@ -38,6 +38,9 @@ Algumas imagens podem não condizer totalmente com a atual condição do código
   Quero retirar a comparação com aqueles números todos, que limita também o algoritmo para 23 variáveis. Basta ver que não é uma das operações e ai ver até onde vai os caracteres de letra, ou seja, ver quando se tem o caractere de operação e obtemos tamanho do caractere que representa uma variável, podemos portanto representar uma variável com quantas letras possíveis.
 </li>
 
+<li>
+  Tem coisa demais na função interpretador, dividir em outras funções, como inserir, ...
+</li>
 </ol>
 
 
