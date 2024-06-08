@@ -29,8 +29,20 @@ Algumas imagens podem não condizer totalmente com a atual condição do código
 
 ## Próxima atualização proposta: 
 
->Quero retirar a função func e colocar um elemento no nó que calcula o valor, chamando recursivamente, em vez de apenas um caractere que diz qual operação, irei fazer um objeto como elemento que vai ter a operação em si, ou seja, teria um objeto para cada operação (não acho bonito um monte de if)
->Quero retirar a comparação com aqueles números todos, que limita também o algoritmo para 23 variáveis. Basta ver que não é uma das operações e ai ver até onde vai os caracteres de letra, ou seja, ver quando se tem o caractere de operação e obtemos tamanho do caractere que representa uma variável, podemos portanto representar uma variável com quantas letras possíveis.
+
+
+
+<ol>
+  
+<li>
+  Quero retirar a função func e colocar um elemento no nó que calcula o valor, chamando recursivamente, em vez de apenas um caractere que diz qual operação, irei fazer um objeto como elemento que vai ter a operação em si, ou seja, teria um objeto para cada operação (não acho bonito um monte de if)
+</li>
+  
+<li>
+  Quero retirar a comparação com aqueles números todos, que limita também o algoritmo para 23 variáveis. Basta ver que não é uma das operações e ai ver até onde vai os caracteres de letra, ou seja, ver quando se tem o caractere de operação e obtemos tamanho do caractere que representa uma variável, podemos portanto representar uma variável com quantas letras possíveis.
+</li>
+
+</ol>
 
 
 
