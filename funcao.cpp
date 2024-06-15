@@ -1,28 +1,29 @@
 #include <math.h>
 #include <stdlib.h>
-#include <iostream>
 #include <string>
 #include"funcoes_aux.cpp";
 using namespace std;
 
 class Funcao{
     private:
+    Arvore_bin arvore;
     No_lista *variaveis;
     char *expressao;
-    No *raiz;
 
     public:
     Funcao(char *expr,No_lista *var=nullptr){
         variaveis = var;
-        raiz = NULL;
         expressao = expr;
     }
 
 
     double Get_valor(double *vetor = NULL){
-        if(raiz == NULL){
+        No *raiz;
 
-            raiz = (No*)malloc(sizeof(No));
+        raiz = arvore.Get_raiz();
+        if(!raiz){
+            
+            raiz = arvore.Add_raiz();
             interpretador(expressao,raiz);
         }
         
@@ -59,45 +60,41 @@ class Funcao{
  
         char *string_back_esq;
         No no;
+        No *filho_esq,*filho_dir;
 
-        //lado esquerdo
+
         if(expr[0] == '('){
             //verificando se o caractere de agora associado ao no_anterior
             //é o começo de uma expressão ou apenas uma base,
             //caso seja, necessita dois filhos
 
-            no_anterior->prox_esq = (No*) malloc(sizeof(No));
-            
-            no_anterior->prox_esq[0] = no;
+            filho_esq = arvore.Add_esq(no_anterior, no);
             
 
-            string_back_esq = interpretador(&expr[1],no_anterior->prox_esq);
+            string_back_esq = interpretador(&expr[1],filho_esq);
             no_anterior->operacao = string_back_esq;
             /*
             indo pro lado direito da expressão
             */
 
-            no_anterior->prox_dir = (No*) malloc(sizeof(No));
-
-            no_anterior->prox_dir[0] = no;
+            filho_dir = arvore.Add_dir(no_anterior, no);
 
             /*
             voltou assim +b)+z) contudo pego apenas b)+z)
             pois estou tirando a operação da propria recursao
             */
 
-            return &interpretador(&string_back_esq[1],no_anterior->prox_dir)[1];
+            return &interpretador(&string_back_esq[1],filho_dir)[1];
 
-        }else{
-            //caso base
+        }else{//caso base
 
             char letras[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m',
                              'n','o','p','q','r','s','v','u','t','w','x','y','z'};
 
-            if(busca(letras,expr[0],26)){
-                //quer dizer que o elemento representa uma variavel
+            if(busca(letras,expr[0],26)){//quer dizer que o elemento representa uma variavel
+                
 
-                if(variaveis == nullptr){
+                if(!variaveis){
    
                     variaveis = (No_lista*)malloc(sizeof(No_lista));
 

@@ -4,9 +4,10 @@ using namespace std;
 int main(){
     
     
-    Funcao func("((x-y)^2)");
+    Funcao func("((x-y)+3)");
 
     double v[] = {4,1};
+    //x=4,y=1
     cout<<func.Get_valor(v)<<"\n";
 
     cout<<"mudando a prioridade das variaveis \n";
@@ -15,8 +16,8 @@ int main(){
     No_lista elemento2('x');
     elemento1.prox = &elemento2;
 
-    Funcao func2("(x-y)",&elemento1);
-
+    Funcao func2("((x-y)+3)",&elemento1);
+    //x=1,y=4
     cout<<func2.Get_valor(v)<<"\n";  
 
 
