@@ -7,19 +7,27 @@ using namespace std;
 class Funcao{
     private:
     Arvore_bin arvore;
-    No_lista *variaveis;
+    lista variaveis;
     char *expressao;
 
     public:
-    Funcao(char *expr,No_lista *var=nullptr){
-        variaveis = var;
+    Funcao(char *expr,lista *var = nullptr){
+        if(var){
+            variaveis = *var;
+        }else{
+            lista *teste = (lista*)calloc(1,sizeof(lista));
+            variaveis = *teste;
+            
+        }
+
         expressao = expr;
-    }
+        //cout<<variaveis.comeco;
+    };
 
 
-    double Get_valor(double *vetor = NULL){
+    double Get_valor(double *vetor){
         No *raiz;
-
+        
         raiz = arvore.Get_raiz();
         if(!raiz){
             
@@ -28,7 +36,7 @@ class Funcao{
         }
         
         return func(raiz, vetor);
-    }
+    };
 
     private:
     double func(No *no, double *vetor){
@@ -53,9 +61,16 @@ class Funcao{
         }
 
         return stoi(&(no->operacao[0]));
-    }
+    };
 
-    //vai interpretar e criar a arvore da expressao
+
+/*
+""=========================================================================================================================""
+"" Vai criar a árvore binária responsável por representar a expressão matemática                                           ""
+""=========================================================================================================================""
+*/                         
+
+
     char* interpretador(char *expr, No *no_anterior){
  
         char *string_back_esq;
@@ -87,92 +102,77 @@ class Funcao{
             return &interpretador(&string_back_esq[1],filho_dir)[1];
 
         }else{//caso base
+            
+            return Caso_base(expr,no_anterior);//retorna a expressão restante
 
-            char letras[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m',
-                             'n','o','p','q','r','s','v','u','t','w','x','y','z'};
+        }
+        
+    };
 
-            if(busca(letras,expr[0],26)){//quer dizer que o elemento representa uma variavel
-                
 
-                if(!variaveis){
-   
-                    variaveis = (No_lista*)malloc(sizeof(No_lista));
+/*
+""=========================================================================================================================""
+""                         Metodo de Caso Base                                                                             ""
+""=========================================================================================================================""
+*/
+    char* Caso_base(char *expr, No *no_anterior){
+        char letras[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m',
+                         'n','o','p','q','r','s','v','u','t','w','x','y','z'};
 
-                    No_lista new_no_lista;
-                    variaveis[0] = new_no_lista;
+        if(busca(letras,expr[0],26)){//quer dizer que o elemento representa uma variavel
+            
 
-                    variaveis->caractere = expr[0];
+            elemento *elemento_atual = variaveis.comeco;
+            
 
-                    char *point = (char*)malloc(2*sizeof(char*));
-                    char caractere[] = "$0";
-                    
+            int qtd = 0;
+            while(elemento_atual){//vejo se a variavel ja esta na lista
 
-                    point[0] = caractere[0];
-                    point[1] = caractere[1];
+                if(elemento_atual->caractere == expr[0]){
 
-                    no_anterior->operacao = point;
-
-                    return &expr[1];
-                }else{
-                    No_lista *list;
-                    No_lista *list_past;
-
-                    list = variaveis;
-                    int qtd = 0;
-                    while(list != nullptr){//vejo se a variavel ja esta na lista
-
-                        if(list->caractere == expr[0]){
-
-                            //retornar o qtd do caractere com $
-                            string string_return = "$"+to_string(qtd);
-                            char *char_op = (char*)malloc(string_return.length()*sizeof(char));
-                            for(int i=0;i<string_return.length();i++){
-                                char_op[i] = string_return[i];
-                            }
-                            no_anterior->operacao = char_op;
-                            return &expr[1];
-                        }
-                        list_past = list;
-                        list = list_past->prox;
-                        qtd++;
-                    }
-                    //n esta na lista
-
-                    No_lista *aux = (No_lista*)malloc(sizeof(No_lista));
-                    No_lista new_no_lista;
-                    *(aux) = new_no_lista;
-
-                    list_past->prox = aux;
-                    aux->caractere = expr[0];
-                    //retornar o qtd+1 do caractere com $
                     string string_return = "$"+to_string(qtd);
                     char *char_op = (char*)malloc(string_return.length()*sizeof(char));
                     for(int i=0;i<string_return.length();i++){
+                        
                         char_op[i] = string_return[i];
                     }
                     no_anterior->operacao = char_op;
-                    return &expr[1];
-
-                
+                     return &expr[1];//retorna a posição do caractere no vetor de variaveis com $.
+                                    //Pois irá facilitar na hora de acessar a posição
                 }
-
-                return &expr[1];
-            }//se n, ele é um numeo e temos que saber o tamanho dele
-            char operacoes[] = {'-','+','/','*','^'};
-            int qtd = -1;
-            do{
+                elemento_atual = elemento_atual->prox;
                 qtd++;
-            }while(!busca(operacoes,expr[qtd],5) && expr[qtd]!=')' );
-            char *op = (char*)malloc((qtd+1)*sizeof(char));
-            for(int i = 0; i<=qtd; i++){
-                op[i] = expr[i];
             }
-            no_anterior->operacao = op;
+            //n esta na lista
 
-            return &expr[qtd];
+            variaveis.Add(expr[0]);
+                
+            //retornar o qtd+1 do caractere com $
+            string string_return = "$"+to_string(qtd);
+            char *char_op = (char*)malloc(string_return.length()*sizeof(char));
+            for(int i=0;i<string_return.length();i++){
+                
+                char_op[i] = string_return[i];
+            }
+            no_anterior->operacao = char_op;
+            
+            
+            return &expr[1];
+        }//se n, ele é um numero e temos que saber o tamanho dele
+        char operacoes[] = {'-','+','/','*','^'};
+        int qtd = -1;
+        do{
+            
+            qtd++;
+        }while(!busca(operacoes,expr[qtd],5) && expr[qtd]!=')' );
+        char *num = (char*)malloc((qtd+1)*sizeof(char));
+        for(int i = 0; i<=qtd; i++){
+            num[i] = expr[i];
         }
-        
-    }
+        no_anterior->operacao = num;
+
+        return &expr[qtd];
+    };
 
 };
 

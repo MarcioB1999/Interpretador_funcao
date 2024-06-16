@@ -1,4 +1,20 @@
 #include <iostream>
+#include <stdexcept>
+
+bool busca(char vetor[],char elemento, int tam){
+
+    //26
+    for(int i = 0; i<tam; i++){
+   
+        if(vetor[i] == elemento){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+//structs
 
 struct No{
     char *operacao;
@@ -12,13 +28,38 @@ struct No{
     }
 };
 
-struct No_lista{
+struct elemento{
     char caractere;
-    No_lista *prox;
+    elemento *prox;
 
-    No_lista(char carac='0'){
+    elemento(){
+        caractere='a';
         prox = nullptr;
-        caractere = carac;
+    }
+};
+
+struct lista{
+
+    elemento *comeco;
+    elemento *ultimo;
+
+    lista(){
+        comeco = nullptr;
+        ultimo = nullptr;
+    }
+
+    void Add(char valor){
+        elemento *new_elemento = (elemento*)malloc(sizeof(elemento));
+        elemento instanciado;
+        *new_elemento = instanciado;
+        new_elemento->caractere = valor;
+        if(comeco){
+            ultimo->prox = new_elemento;
+            ultimo = new_elemento;
+        }else{
+            comeco = ultimo = new_elemento;
+        }
+
     }
 };
 
@@ -36,7 +77,9 @@ struct Arvore_bin{
 
     No* Add_raiz(){
         if(raiz == NULL){
+            No instanciado;
             raiz = (No*)malloc(sizeof(No));
+            *raiz = instanciado;
         }
         return raiz;
     }
@@ -56,18 +99,3 @@ struct Arvore_bin{
         return pai->prox_dir;
     }
 };
-
-bool busca(char vetor[],char elemento, int tam);
-
-bool busca(char vetor[],char elemento, int tam){
-
-    //26
-    for(int i = 0; i<tam; i++){
-   
-        if(vetor[i] == elemento){
-            return true;
-        }
-    }
-
-    return false;
-}
