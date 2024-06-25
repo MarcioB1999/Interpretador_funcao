@@ -10,7 +10,7 @@ A pra instanciar uma classe, o construtor recebe uma expressão e um ponteiro da
 
 
 ## TESTE:
-<img height="250em" src="https://github.com/MarcioB1999/Interpretador_funcao/blob/main/Imgs/teste.png"/>
+<img height="250em" src="https://github.com/MarcioB1999/Interpretador_funcao/blob/main/Imgs/teste.jpg"/>
 
 # Métodos Públicos:
 
