@@ -8,8 +8,8 @@ void PercorrerArvore(No *no,double *vetor);
 
 
 int main(){
-    string expr("((x+y)+((5*x)+y))");
-    char expressao[] = "((x+y)+((5*x)+y))";
+    string expr("(((x+y)^(1/2))+((5*x)+y))");
+    char expressao[] = "(((x+y)^(1/2))+((5*x)+y))";
     char *i = expressao;//(char*)malloc(2*sizeof(char));
     lista variaveis_ordem;
     variaveis_ordem.Add('x');
@@ -25,18 +25,23 @@ int main(){
     PercorrerArvore(func.Get_raiz(),v);
     //cout<<"operacao do filho esq = "<<func.Get_raiz()->prox_esq->operacao[0];
     cout<<" = "<<func.Get_valor(v)<<"\n";
-    system("pause");
-    /*
+    
     cout<<"mudando a prioridade das variaveis \n";
+
+
 
     lista variaveis_ordem2;//Agora o y vai ser considerado o primeiro elemento do vetor
     variaveis_ordem2.Add('y');
     variaveis_ordem2.Add('x');
 
-    Funcao func2("((x-y)+3)",&variaveis_ordem2);
+    Funcao func2(i,&variaveis_ordem2);
     //x=1,y=4
-    cout<<"((1-4)+3)"<<func2.Get_valor(v)<<"\n";  
-   */
+    func2.Interpretar();
+    PercorrerArvore(func2.Get_raiz(),v);
+    //cout<<"operacao do filho esq = "<<func.Get_raiz()->prox_esq->operacao[0];
+    cout<<" = "<<func2.Get_valor(v)<<"\n";
+
+    system("pause");
     return 0;
 };
 
