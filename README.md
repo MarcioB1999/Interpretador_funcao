@@ -39,7 +39,7 @@ Algumas imagens podem não condizer totalmente com a atual condição do código
 </li>
 
 <li>
-  Tem coisa demais na função interpretador, dividir em outras funções, como inserir, ...
+  As estruturas auxiliares ainda são bem simples, basicamente so tem o básico para a estrutura principal funcionar de modo que o codigo fique mais limpo e legível. com a estrutura principal não se preocupando em COMO vai adicionar algo na árvore, mas apenas adicionar. Esse pensamento vale para outras estruturas auxiliares 
 </li>
 </ol>
 
