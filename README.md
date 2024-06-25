@@ -8,11 +8,22 @@ A pra instanciar uma classe, o construtor recebe uma expressão e um ponteiro da
 
 <img height="250em" src="https://github.com/MarcioB1999/Interpretador_funcao/blob/main/Imgs/ReconhecerVariaveis.png"/>
 
+
+## TESTE:
+<img height="250em" src="https://github.com/MarcioB1999/Interpretador_funcao/blob/main/Imgs/teste.png"/>
+
+# Métodos Públicos:
+
 ## Get_valor(double *vetor = NULL)
 >Argumentos:
 >> vetor: Vetor de valores para se calcular a expressão
 >Retorno: Valor da expressão para os valores de v
 
+## Get_raiz()
+>Retorno: Endereço do nó raiz
+
+## Interpretar()
+>Explicação: Ele monta a árvore binária 
 
 ## Obs: 
 
