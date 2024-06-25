@@ -41,6 +41,10 @@ Algumas imagens podem não condizer totalmente com a atual condição do código
 <li>
   As estruturas auxiliares continuam simples porém com os métodos no qual a estrutura principal precisa. 
 </li>
+
+<li>
+  Quero retirar a necessidade de muitos parenteses, fazendo com um pai possa ter mais filhos é uma ideia. 
+</li>
 </ol>
 
 
