@@ -11,6 +11,9 @@ int main(){
     string expr("(((x+y)^(1/2))+((5*x)+y))");
     char expressao[] = "(((x+y)^(1/2))+((5*x)+y))";
     char *i = expressao;//(char*)malloc(2*sizeof(char));
+    cout<<"expressao = "<<expressao<<"\n";
+
+    cout<<"ordem = (x=4,y=1)"<<"\n";
     lista variaveis_ordem;
     variaveis_ordem.Add('x');
     variaveis_ordem.Add('y');
@@ -26,9 +29,9 @@ int main(){
     //cout<<"operacao do filho esq = "<<func.Get_raiz()->prox_esq->operacao[0];
     cout<<" = "<<func.Get_valor(v)<<"\n";
     
-    cout<<"mudando a prioridade das variaveis \n";
+    cout<<"mudando a ordem das variaveis \n";
 
-
+    cout<<"ordem = (x=1,y=4)"<<"\n";
 
     lista variaveis_ordem2;//Agora o y vai ser considerado o primeiro elemento do vetor
     variaveis_ordem2.Add('y');
