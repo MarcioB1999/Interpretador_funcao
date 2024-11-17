@@ -8,7 +8,7 @@ class Funcao{
     char *expressao;
 
     public:
-    Funcao(char *expr, lista *var);
+    Funcao(char *expr, lista *var = nullptr);
 
     void Interpretar();
 

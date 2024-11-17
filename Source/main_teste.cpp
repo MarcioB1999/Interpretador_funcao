@@ -7,13 +7,14 @@ void PercorrerArvore(No *no,double *vetor);
 //g++ main_teste.cpp Funcao.cpp Elemento.cpp Arvore_bin.cpp Lista.cpp No.cpp -o teste.exe
 
 
+
 int main(){
-    string expr("(((x+y)^(1/2))+((5*x)+y))");
-    char expressao[] = "(((x+y)^(1/2))+((5*x)+y))";
+    //char expressao[] = "(((((x+y)^(1/2))+((5*x)+y))/2)-1)";
+    char expressao[] {"((x-5)+y)"};
     char *i = expressao;//(char*)malloc(2*sizeof(char));
     cout<<"expressao = "<<expressao<<"\n";
 
-    cout<<"ordem = (x=4,y=1)"<<"\n";
+    cout<<"ordem = (x=0,y=0)"<<"\n";
     lista variaveis_ordem;
     variaveis_ordem.Add('x');
     variaveis_ordem.Add('y');
@@ -22,7 +23,7 @@ int main(){
     Funcao func(i,&variaveis_ordem);
 
     
-    double v[] = {4,1};
+    double v[] = {0,0};
     //x=4,y=1
     func.Interpretar();
     PercorrerArvore(func.Get_raiz(),v);
@@ -31,7 +32,7 @@ int main(){
     
     cout<<"mudando a ordem das variaveis \n";
 
-    cout<<"ordem = (x=1,y=4)"<<"\n";
+    cout<<"ordem = (x=0,y=0)"<<"\n";
 
     lista variaveis_ordem2;//Agora o y vai ser considerado o primeiro elemento do vetor
     variaveis_ordem2.Add('y');
@@ -45,6 +46,7 @@ int main(){
     cout<<" = "<<func2.Get_valor(v)<<"\n";
 
     system("pause");
+
     return 0;
 };
 

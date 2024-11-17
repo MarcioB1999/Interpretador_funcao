@@ -1,9 +1,7 @@
 #include "../Header/Arvore_bin.h"
 #include <iostream>
 
-Arvore_bin::Arvore_bin(){
-    this->raiz = nullptr;
-};
+Arvore_bin::Arvore_bin(): raiz(nullptr) {}
 
 
 No* Arvore_bin::Get_raiz(){
@@ -11,7 +9,7 @@ No* Arvore_bin::Get_raiz(){
 };
 
 No* Arvore_bin::Add_raiz(){
-    if(this->raiz == NULL){
+    if(this->raiz == nullptr){
         this->raiz = new No();
     }
     return raiz;

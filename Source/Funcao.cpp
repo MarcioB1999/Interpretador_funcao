@@ -3,13 +3,12 @@
 #include <string>
 #include "../Header/Funcao.h"
 
-Funcao::Funcao(char *expr, lista *var = nullptr){
+Funcao::Funcao(char *expr, lista *var){
     
-    if(var){
+    if(var != nullptr){
         this->variaveis = *var;
     }else{
-        lista *teste = (lista*)calloc(1,sizeof(lista));
-        this->variaveis = *teste;  
+        this->variaveis = *((lista*)calloc(1,sizeof(lista)));
     }
 
     this->expressao = expr;

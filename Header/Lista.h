@@ -7,5 +7,15 @@ class lista{
 
         lista();
 
+        virtual ~lista();
+
         void Add(char valor);
+
+        void Percorrer();
+
+        void RemoverPrimeiro();
+
+        void RemoverTudo();
+
+
 };
