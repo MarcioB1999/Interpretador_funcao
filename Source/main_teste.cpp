@@ -4,7 +4,7 @@ using namespace std;
 
 void PercorrerArvore(No *no,double *vetor);
 //comando para gerar o executável e testar
-//g++ main_teste.cpp Funcao.cpp Elemento.cpp Arvore_bin.cpp Lista.cpp No.cpp -o teste.exe
+//g++ main_teste.cpp Funcao.cpp Estrutura_De_Dados\\Source\\Elemento.cpp Arvore_bin.cpp Estrutura_De_Dados\\Source\\Lista.cpp Estrutura_De_Dados\\Source\\No.cpp -o teste.exe
 
 
 

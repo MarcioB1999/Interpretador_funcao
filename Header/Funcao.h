@@ -1,5 +1,5 @@
-#include"Lista.h"
-#include"Arvore_bin.h"
+#include"..\Estrutura_De_Dados\Header\Lista.h"
+#include"..\Estrutura_De_Dados\Header\Arvore_bin.h"
 
 class Funcao{
     private:
