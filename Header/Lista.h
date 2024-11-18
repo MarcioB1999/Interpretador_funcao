@@ -4,6 +4,7 @@ class lista{
     public:
         elemento *comeco;
         elemento *ultimo;
+        int size;
 
         lista();
 

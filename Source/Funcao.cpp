@@ -30,6 +30,10 @@ double Funcao::Get_valor(double *vetor){
     return func(this->arvore.Get_raiz(), vetor);
 }
 
+int Funcao::Get_dimensao(){
+    return this->variaveis.size;
+}
+
 
 double Funcao::func(No *no, double *vetor){
 

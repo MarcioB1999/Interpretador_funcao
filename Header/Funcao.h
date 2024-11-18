@@ -16,6 +16,8 @@ class Funcao{
 
     No* Get_raiz();
 
+    int Get_dimensao();
+
     private:
     double func(No *no, double *vetor);                       
 
